@@ -286,7 +286,7 @@ describe('truncate.js', function () {
         assert.equal(this.$fixture.html(), "<div>Members, friends, adversaries,… <a href=\"#\">More</a></div>");
 
         this.$fixture.truncate('expand');
-        assert.equal(this.$fixture.html(), '<div>Members, friends, adversaries, competitors, and colleagues</div>');
+        assert.equal(this.$fixture.html(), "<div>Members, friends, adversaries, competitors, and colleagues</div><a href=\"#\">Less</a>");
       });
     });
 
