@@ -1,4 +1,12 @@
-(function (module, $, undefined) {
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jQuery'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        module.exports = factory(require('jQuery'));
+    } else {
+        root.Truncate = factory(root.jQuery);
+    }
+}(this, function ($) {
 
   var BLOCK_TAGS = ['table', 'thead', 'tbody', 'tfoot', 'tr', 'col', 'colgroup', 'object', 'embed', 'param', 'ol', 'ul', 'dl', 'blockquote', 'select', 'optgroup', 'option', 'textarea', 'script', 'style'];
 
@@ -489,11 +497,8 @@
      * Returns nothing.
      */
     expand: function () {
-      var includeShowLess = true;
-
       if(this.isExplicitlyCollapsed) {
         this.isExplicitlyCollapsed = false;
-        includeShowLess = false;
       }
 
       if (!this.isCollapsed) {
@@ -502,7 +507,7 @@
 
       this.isCollapsed = false;
 
-      this.element.innerHTML = this.isTruncated ? this.original + (includeShowLess ? this.options.showLess : "") : this.original;
+      this.element.innerHTML = this.isTruncated ? this.original + this.options.showLess : this.original;
     },
 
     /* Public: Collapses the element to the truncated state.
@@ -514,7 +519,7 @@
      */
     collapse: function (retruncate) {
       this.isExplicitlyCollapsed = true;
-      
+
       if (this.isCollapsed) {
         return;
       }
@@ -543,6 +548,6 @@
     });
   };
 
-  module.Truncate = Truncate;
+  return Truncate;
 
-})(this, jQuery);
+}));
