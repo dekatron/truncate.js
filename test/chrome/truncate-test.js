@@ -320,14 +320,14 @@ describe('truncate.js', function () {
       this.$fixture.truncate('collapse');
       assert.equal(this.$fixture.html(), "<div>Members, friends, adversaries… <a href=\"#\">More</a></div>");
     });
-    
+
     it('should keep the collapsed status after multiple update', function () {
       this.$fixture.truncate('collapse');
       assert.equal(this.$fixture.html(), "<div>Members, friends, adversaries… <a href=\"#\">More</a></div>");
 
       this.$fixture.truncate('update', '<div>Members.</div>');
       assert.equal(this.$fixture.html(), "<div>Members.</div>");
-      
+
       this.$fixture.truncate('update', '<div>Members, friends, adversaries, competitors, and colleagues</div>');
       assert.equal(this.$fixture.html(), "<div>Members, friends, adversaries… <a href=\"#\">More</a></div>");
     });
