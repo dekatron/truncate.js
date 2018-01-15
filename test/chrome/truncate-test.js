@@ -405,7 +405,7 @@ describe('truncate.js', function () {
       assert.equal(this.$fixture.html(), "Lorem Ipsum is simply dummy text…");
 
       this.$fixture.truncate('config', {lines: 2});
-      assert.equal(this.$fixture.html(), "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem");
+      assert.equal(this.$fixture.html(), "Lorem Ipsum is simply dummy text of the printing and typesetting industry…");
     });
 
     it('should keep the collapsed after update options', function () {
